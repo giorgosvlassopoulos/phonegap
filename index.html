@@ -1,0 +1,212 @@
+<!DOCTYPE html> 
+<html> 
+
+    <head> 
+    <title>Basic mobile app</title> 
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0, user-scalable=no" >  
+ 
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+ <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style> 
+img{
+max-width:100%;
+
+}
+.ui-page .ui-header {
+    background: #599FDC !important;
+}
+.ui-footer {
+    background: #599FDC !important;
+}
+#map-content{height:300px;width:450px;}
+.responsive-width {
+    max font-size: 3vw;
+}
+</style>
+
+
+	
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+	<script>
+		function initialize() {
+		var myLatLng = {lat: 37.9727976, lng: 23.7296074};
+			var mapOptions = {
+				center: new google.maps.LatLng(37.9727976,23.7296074), // ;o)
+				zoom: 18,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("map-content"),mapOptions);
+			var marker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		});
+		}
+	</script>
+    <script>
+	$(document).bind('mobileinit',function(){
+    $.mobile.changePage.defaults.changeHash = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
+	});
+	</script>
+   
+
+</head> 
+<body> 
+<div data-role="page" id="home.html" >       <!-- home page -->  
+	<div  data-role="header" data-id="mainhead">	 <!-- header containing logo --> 
+    	<picture>
+		<img src="images/logo.png" alt="img" media="(orientation: portrait)"/>
+		</picture>
+    </div>
+    <div data-role="navbar" data-iconpos="top" data-id="mainnav"> <!-- navigation bar  --> 
+		<ul>
+		<li><a href="#home.html" data-icon="home" class="ui-btn-active ui-state-persist" data-transition="pop">Αρχική</a></li>
+		<li><a href="#" data-icon="star" class="ui-shadow ui-btn ui-state-disabled">Προσφορές</a></li>
+		<li><a href="#contact.html" data-icon="info" data-transition="pop">Επικοινωνία</a></li>
+		</ul>
+	</div>
+
+    <div data-role="main“ class=“ui-content">	<!-- List of choices --> 
+		<h1 align="center">Επιλέξτε κατηγορία Εστιατορίου</h1>
+        <ul data-role="listview" data-inset="true">
+			<li><a href="#choose_restaurant.html" data-transition="pop"><img src="images/burger.jpg">Fast Food</a></li>
+			<li><a href="#choose_restaurant.html" data-transition="pop"><img src="images/pizza.jpg">Pizza</a></li>
+			<li><a href="#choose_restaurant.html" data-transition="pop"><img src="images/bar_restaurant.jpg">Bar Restaurant</a></li>
+		</ul>
+    </div>  
+    <footer data-role="footer">	   <!-- footer -->
+    	<h2> G.Vlassopoulos &copy; 2015 </h2>
+    </footer>
+</div> <!-- end of home page --> 
+ 
+
+<div data-role="page" id="choose_restaurant.html"> <!-- choose_restaurant.html page --> 
+	<div  data-role="header" data-id="mainhead">	 <!-- header containing logo --> 
+    	<picture>
+		<img src="images/logo.png" alt="img" media="(orientation: portrait)"/>
+		</picture>
+    </div>
+    <div data-role="navbar" data-iconpos="top" data-id="mainnav"> <!-- navigation bar  --> 
+		<ul>
+		<li><a href="#home.html" data-icon="home" data-transition="pop">Αρχική</a></li>
+		<li><a href="#" data-icon="star" class="ui-shadow ui-btn ui-state-disabled">Προσφορές</a></li>
+		<li><a href="#contact.html" data-icon="info" data-transition="pop">Επικοινωνία</a></li>
+		</ul>
+	</div>
+	<div data-role="main“ class=“ui-content">	 <!-- List of restaurants --> 
+		<h1 align="center">Επιλέξτε Εστιατόριο</h1> 
+		<form class="ui-filterable">
+		<input id="myFilter" data-type="search" placeholder="Search for restaurants..">
+		</form>
+		<ul data-role="listview" data-filter="true" data-input="#myFilter"  data-inset="true">
+		<li><a href="#restaurant_info.html" data-transition="pop"><img src="images/rest01_small.jpg" >Ανατολή <span class="ui-li-count"  > 4 stars </span> </a></li>
+		<li><a href="#restaurant_info.html" data-transition="pop"><img src="images/rest02_small.jpg" >Αμαρυλίς <span class="ui-li-count" > 4 stars </span> </a></li>
+		<li><a href="#restaurant_info.html" data-transition="pop"><img src="images/rest03_small.jpg" >Αμβροσία <span class="ui-li-count" > 3 stars </span> </a></li>
+		<li><a href="#restaurant_info.html" data-transition="pop"><img src="images/rest04_small.jpg" >'Εσπερος <span class="ui-li-count" > 2 stars </span>  </a></li>
+		</ul>
+	</div>
+     <footer data-role="footer">	   <!-- footer -->
+    	<h2> G.Vlassopoulos &copy; 2015 </h2>
+    </footer>
+</div> <!-- end of choose_restaurant.html page --> 
+
+
+
+<div data-role="page" id="restaurant_info.html"> <!-- restaurant_info.html page --> 
+	<div  data-role="header" data-id="mainhead">	 <!-- header containing logo --> 
+    	<picture>
+		<img src="images/logo.png" alt="img" media="(orientation: portrait)"/>
+		</picture>
+    </div>
+    <div data-role="navbar" data-iconpos="top" data-id="mainnav"> <!-- navigation bar  --> 
+		<ul>
+		<li><a href="#home.html" data-icon="home" data-transition="pop">Αρχική</a></li>
+		<li><a href="#" data-icon="star" class="ui-shadow ui-btn ui-state-disabled">Προσφορές</a></li>
+		<li><a href="#contact.html" data-icon="info" data-transition="pop">Επικοινωνία</a></li>
+		</ul>
+	</div>
+    <div class="ui-grid-a">
+		<div class="ui-block-a" data-inset="true">  <!-- block that contains restaurant info --> 
+			<p style="font-size:200%" >Ανατολή</p>
+			<p>Ανδριανού 120</p>
+			<p>Πλάκα, Αθήνα</p>
+			<p>Τ.Κ 154 65</p>
+		</div>
+		<div class="ui-block-b"> <img src="images/anatoli.jpg" alt="Anatoli" style="width:content;height:228px;" > <!-- block that contains restaurant image --> 
+		</div>
+		
+		<div class="ui-block-a" >  <!-- block that contains google maps button --> 
+			
+		<a id="button" data-role="button"  onclick="initialize();" data-inline="true" >Βρείτε μας στο Google Maps</a>
+			<div id="map-content" ></div>
+		</div>
+
+		<div class="ui-block-a">  <!-- block that contains phone button -->
+			<a href="tel:1234567890" style="max-width:100%;text-align: left; " data-inline="true" data-role="button" data-icon="info" > Τηλεφωνήστε μας </a>	
+		</div>
+
+		<div class="ui-block-a">  <!-- block that contains collapsible information -->
+			<div data-role="collapsible">
+			<h1>Ώρες λειτουργίας</h1>
+			<div class="ui-grid-a">
+				<p>Δευτέρα-Παρασκευή 18:00-24:00</p>
+				<p>Σάββατο 13:00-24:00
+				<br>Κυριακή 12:00-24:00</p>
+			</div>
+			</div>
+		</div>
+	</div>
+    <footer data-role="footer">	   <!-- footer -->
+    	<h2> G.Vlassopoulos &copy; 2015 </h2>
+    </footer>
+</div> <!-- end of restaurant_info.html page --> 
+
+
+<div data-role="page" id="contact.html"> <!-- contact.html page --> 
+	<div  data-role="header" data-id="mainhead">	 <!-- header containing logo --> 
+    	<picture>
+		<img src="images/logo.png" alt="img" media="(orientation: portrait)"/>
+		</picture>
+    </div>
+    <div data-role="navbar" data-iconpos="top" data-id="mainnav"> <!-- navigation bar  --> 
+		<ul>
+		<li><a href="#home.html" data-icon="home" data-transition="pop">Αρχική</a></li>
+		<li><a href="#" data-icon="star" class="ui-shadow ui-btn ui-state-disabled">Προσφορές</a></li>
+		<li><a href="#contact.html" data-icon="info" class="ui-btn-active ui-state-persist" data-transition="pop">Επικοινωνία</a></li>
+		</ul>
+	</div>
+     
+    <form method="post" action="http://dgavalas.ct.aegean.gr/mobile/examples/jqm/server_script.php"> <!-- contact form  -->
+	<div class="ui-field-contain">
+		<label for="fname">Όνομα:</label> 
+		<input type="text" name="fname" id="fname"> <!-- firstname label/textbox  -->
+		
+		<label for="lname">Επώνυμο:</label>
+		<input type="text" name="lname"id="lname"> <!-- lastname label/textbox  -->
+		
+		<label for="email">Email:</label>
+		<input type="email" name="email"id="email"> <!-- email label/textbox  -->
+
+		<label for="pnumber">Τηλέφωνο:</label>
+		<input type="text" name="pnumber"id="pnumber"> <!-- phonenumber label/textbox  -->
+
+		<label for="conreason">Λόγος Επικοινωνίας:</label> <!-- reason label/options  -->
+		<select name="conreason" id="conreason">
+		<option value="ipsum1"> Lorem Ipsum 1</option>
+		<option value="ipsum2"> Lorem Ipsum 2</option>
+		<option value="ipsum3"> Lorem Ipsum 3</option>
+		<option value="ipsum4"> Lorem Ipsum 4</option>
+		</select>
+	</div>
+	<input type="submit" value="Υποβολή" data-icon="check" data-iconpos="right" data-inline="true"> <!-- submit button  -->
+	</form>
+	<footer data-role="footer">	   <!-- footer -->
+    	<h2> G.Vlassopoulos &copy; 2015 </h2>
+    </footer>
+</div> <!-- end of contact.html page --> 
+</body>
+</html>
